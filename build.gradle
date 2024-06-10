@@ -35,15 +35,6 @@ task copyTestResource(type: Copy) {
     mustRunAfter processTestResources
 }
 
-task cyclonedxBom {
-    // Define your cyclonedxBom task here
-    // For example:
-    doLast {
-        println "Executing cyclonedxBom task..."
-        // Your task logic goes here
-    }
-}
-
 compileJava {
     inputs.property("moduleName", moduleName)
     doFirst {
