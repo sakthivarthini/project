@@ -4,6 +4,7 @@ plugins {
     id 'java'
     id 'application'
     id "org.beryx.jlink" version "2.16.2"
+    id 'org.cyclonedx.bom' version '1.8.1'
 }
 
 group 'razesoldier'
@@ -15,7 +16,17 @@ targetCompatibility = 14
 repositories {
     mavenCentral()
 }
-
+cyclonedxBom {
+    includeConfigs = ["runtimeClasspath"]
+    projectType = "application"
+    schemaVersion = "1.5"
+    destination = file("build/reports")
+    outputName = "bom"
+    outputFormat = "xml"
+    includeBomSerialNumber = false
+    includeLicenseText = false
+    componentVersion = "2.0.0"
+}
 dependencies {
     implementation("com.mayabot.mynlp:mynlp-transform:3.0.2")
     implementation("org.jsoup:jsoup:1.12.1")
